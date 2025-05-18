@@ -1,4 +1,4 @@
-.PHONY: all test install install-dev clean
+.PHONY: all test install dev clean
 PYTHON = python3
 
 -include .env
@@ -10,10 +10,10 @@ install:
 	@echo "Installing/updating production dependencies..."
 	@uv sync
 
-test: install-dev
+test: dev
 	pytest
 
-install-dev: install
+dev: install
 	@echo "Installing development dependencies..."
 	@uv pip install -e .
 	@pre-commit install
